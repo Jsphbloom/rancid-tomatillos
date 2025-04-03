@@ -21,12 +21,22 @@ function App() {
     setMovies(updatedMovie)
   }
 
+  function downVoteMovie(id) {
+    const updatedMovie = movies.map(movie => {
+      if (movie.id === id) {
+        return { ...movie, vote_count: movie.vote_count - 1 };
+      }
+      return movie
+    })
+    setMovies(updatedMovie)
+  }
+
   return (
     <main className='App'>
       <header>
         <h1>rancid tomatillos</h1>
       </header>
-      <MoviesContainer movies={movies} upVoteMovie={upVoteMovie} />
+      <MoviesContainer movies={movies} upVoteMovie={upVoteMovie} downVoteMovie={downVoteMovie} />
     </main>
   );
 }
