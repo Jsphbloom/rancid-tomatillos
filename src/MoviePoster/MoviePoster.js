@@ -6,16 +6,19 @@ function MoviePoster({poster_path, title, vote_count, id, upVoteMovie, downVoteM
   return (
     <section className='MoviePoster'>
       <img src={poster_path} alt={title} />
-      
-      <button onClick={() => upVoteMovie(id)}>
-        <img src={upVoteArrow} alt="Downvote"/>
-      </button>
+      <section className='VoteCount'>
 
-      <p>{vote_count}</p>
+        <button onClick={() => upVoteMovie(id)}>
+          <img src={upVoteArrow} alt="Downvote"/>
+        </button>
 
-      <button onClick={() => downVoteMovie(id)}>
-        <img src={downVoteArrow} alt="Downvote"/>
-      </button>
+          <p>{vote_count}</p>
+
+        <button onClick={() => downVoteMovie(id)}>
+          <img src={downVoteArrow} alt="Downvote"/>
+        </button>
+        
+      </section>
     </section>
   );
 }
