@@ -1,7 +1,7 @@
 import MoviePoster from '../MoviePoster/MoviePoster'
 import './MoviesContainer.css';
 
-function Movies({ movies }) {
+function MoviesContainer({ movies, upVoteMovie }) {
 
   const moviePosters = movies.map( movie => {
     return (
@@ -11,6 +11,7 @@ function Movies({ movies }) {
         vote_count={movie.vote_count}
         id={movie.id}
         key={movie.id}
+        upVoteMovie={upVoteMovie}
       />
     )
   })
@@ -22,4 +23,4 @@ function Movies({ movies }) {
   );
 }
   
-export default Movies;
+export default MoviesContainer;
