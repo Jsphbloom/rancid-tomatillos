@@ -41,8 +41,18 @@ function App() {
       <header>
         <h1>rancid tomatillos</h1>
       </header>
-      <MoviesContainer movies={movies} vote_count = {voteCount} upvoteMovie={upvoteMovie} downvoteMovie={downvoteMovie} />
-      <MovieDetails movie_details={movieDetails} />
+      
+      {selectedMovie ? (
+        <MovieDetails movie_details={selectedMovie} />
+      ) : (
+        <MoviesContainer
+        movies={movies} 
+        vote_count = {voteCount} 
+        upvoteMovie={upvoteMovie} 
+        downvoteMovie={downvoteMovie} 
+        onSelectMovie={handleSelectMovie} 
+        />
+      )}
     </main>
   );
 }
