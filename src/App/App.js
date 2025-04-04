@@ -2,16 +2,66 @@ import './App.css';
 import searchIcon from '../icons/search.png';
 import MovieDetails from '../MovieDetails/MovieDetails'
 
-
-
 import { useState, useEffect } from 'react';
-import moviePosters from '../data/movie_posters';
-import movieDetails from '../data/movie_details';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 function App() {
-  const [movies, setMovies] = useState(moviePosters)
+  const [movies, setMovies] = useState([])
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [error, setError] = useState('')
+
+function getMovies() {
+  fetch('https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies')
+  .then(response => response.json())
+  .then(data => setMovies([...movies, ...data]))
+  .catch(error => setError(error.message))
+}
+
+function upVoteMovie(id){
+fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${id}`, {
+  method: 'PATCH',
+  headers: {
+  	'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ vote_direction: "up" }),
+})
+  .then(response => response.json())
+  .then(updatedMovie => {
+    setMovies(prevMovies =>
+      prevMovies.map(movie =>
+        movie.id === updatedMovie.id ? updatedMovie : movie
+      )
+    );
+  })
+  .catch(error => setError(error.message))
+};
+
+function downVoteMovie(id){
+  fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ vote_direction: "down" }),
+  })
+    .then(response => response.json())
+    .then(updatedMovie => {
+      setMovies(prevMovies =>
+        prevMovies.map(movie =>
+          movie.id === updatedMovie.id ? updatedMovie : movie
+        )
+      );
+    })
+    .catch(error => setError(error.message))
+  };
+
+useEffect(() => {
+  getMovies();
+}, [])
+
+
+
+
 
   const handleSelectMovie = (movie) => {
     console.log("Movie selected:", movie);
@@ -22,26 +72,6 @@ function App() {
     setSelectedMovie(null)
   }
 
-  function upVoteMovie(id) {
-    const updatedMovie = movies.map(movie => {
-      if (movie.id === id) {
-        return { ...movie, vote_count: movie.vote_count + 1 };
-      }
-      return movie
-    })
-    setMovies(updatedMovie)
-  }
-
-  function downVoteMovie(id) {
-    const updatedMovie = movies.map(movie => {
-      if (movie.id === id) {
-        return { ...movie, vote_count: movie.vote_count - 1 };
-      }
-      return movie
-    })
-    setMovies(updatedMovie)
-  }
-
   return (
     <main className='App'>
       <header>
@@ -49,7 +79,7 @@ function App() {
       </header>
 
       {selectedMovie ? (
-        <MovieDetails movieDetails={movieDetails} goHome={goHome}/>
+        <MovieDetails goHome={goHome}/>
       ) : (
         <MoviesContainer
         movies={movies} 
