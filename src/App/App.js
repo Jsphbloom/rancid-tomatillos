@@ -1,12 +1,12 @@
 import './App.css';
 import searchIcon from '../icons/search.png';
-
+import MovieDetails from '../MovieDetails/MovieDetails'
 
 
 
 import { useState, useEffect } from 'react';
 import moviePosters from '../data/movie_posters';
-// import movieDetails from '../data/movie_details';
+import movieDetails from '../data/movie_details';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 function App() {
@@ -20,6 +20,10 @@ function App() {
     filteredMovie.vote_count += 1
     setVoteCount(filteredMovie)
   }
+
+  // function showDetails(){
+  //   const [movies, ]
+  // }
 
   function downvoteMovie(id){
     const filteredMovie= movies.filter(movie => {
@@ -35,6 +39,7 @@ function App() {
         <h1>rancid tomatillos</h1>
       </header>
       <MoviesContainer movies={movies} vote_count = {voteCount} upvoteMovie={upvoteMovie} downvoteMovie={downvoteMovie} />
+      <MovieDetails movie_details={movieDetails} />
     </main>
   );
 }
