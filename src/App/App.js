@@ -17,6 +17,43 @@ function getMovies() {
   .catch(error => setError(error.message))
 }
 
+function upVoteMovie(id){
+fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${id}`, {
+  method: 'PATCH',
+  headers: {
+  	'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ vote_direction: "up" }),
+})
+  .then(response => response.json())
+  .then(updatedMovie => {
+    setMovies(prevMovies =>
+      prevMovies.map(movie =>
+        movie.id === updatedMovie.id ? updatedMovie : movie
+      )
+    );
+  })
+  .catch(error => setError(error.message))
+};
+
+function downVoteMovie(id){
+  fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ vote_direction: "down" }),
+  })
+    .then(response => response.json())
+    .then(updatedMovie => {
+      setMovies(prevMovies =>
+        prevMovies.map(movie =>
+          movie.id === updatedMovie.id ? updatedMovie : movie
+        )
+      );
+    })
+    .catch(error => setError(error.message))
+  };
 
 useEffect(() => {
   getMovies();
@@ -33,26 +70,6 @@ useEffect(() => {
 
   function goHome(){
     setSelectedMovie(null)
-  }
-
-  function upVoteMovie(id) {
-    const updatedMovie = movies.map(movie => {
-      if (movie.id === id) {
-        return { ...movie, vote_count: movie.vote_count + 1 };
-      }
-      return movie
-    })
-    setMovies(updatedMovie)
-  }
-
-  function downVoteMovie(id) {
-    const updatedMovie = movies.map(movie => {
-      if (movie.id === id) {
-        return { ...movie, vote_count: movie.vote_count - 1 };
-      }
-      return movie
-    })
-    setMovies(updatedMovie)
   }
 
   return (
