@@ -12,6 +12,11 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 function App() {
   const [movies, setMovies] = useState(moviePosters)
   const [voteCount, setVoteCount] = useState("")
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const handleSelectMovie = (movie) => {
+    setSelectedMovie(movie)
+  }
 
   function upvoteMovie(id){
     const filteredMovie= movies.filter(movie => {
@@ -21,10 +26,6 @@ function App() {
     setVoteCount(filteredMovie)
   }
 
-  // function showDetails(){
-  //   const [movies, ]
-  // }
-
   function downvoteMovie(id){
     const filteredMovie= movies.filter(movie => {
       return movie.id === id
@@ -32,6 +33,8 @@ function App() {
     filteredMovie.vote_count -=1
     setVoteCount(filteredMovie)
   }
+
+
 
   return (
     <main className='App'>
