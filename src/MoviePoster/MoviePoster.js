@@ -9,7 +9,6 @@ function MoviePoster({ poster_path, upvote, vote_count, downvote, title, id, onS
       <button onClick = { () => upvote(id)}>upvote</button>
       <p>vote count: {vote_count}</p>
       <button onClick = { () => downvote(id)}>downvote</button>
-
     </section>
   );
 }

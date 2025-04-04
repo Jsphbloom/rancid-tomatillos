@@ -15,6 +15,7 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   const handleSelectMovie = (movie) => {
+    console.log("Movie selected:", movie);
     setSelectedMovie(movie)
   }
 
@@ -41,9 +42,9 @@ function App() {
       <header>
         <h1>rancid tomatillos</h1>
       </header>
-      
+
       {selectedMovie ? (
-        <MovieDetails movie_details={selectedMovie} />
+        <MovieDetails movieDetails={selectedMovie} />
       ) : (
         <MoviesContainer
         movies={movies} 
