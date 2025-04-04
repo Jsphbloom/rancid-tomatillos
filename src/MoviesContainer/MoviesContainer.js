@@ -1,7 +1,7 @@
 import MoviePoster from '../MoviePoster/MoviePoster'
 import './MoviesContainer.css';
 
-function Movies({ movies, upvoteMovie, downvoteMovie, vote_count, onSelectMovie }) {
+function MoviesContainer({ movies, upVoteMovie, downVoteMovie, onSelectMovie }) {
 
   const moviePosters = movies.map( movie => {
     return (
@@ -11,8 +11,8 @@ function Movies({ movies, upvoteMovie, downvoteMovie, vote_count, onSelectMovie 
         vote_count={movie.vote_count}
         id={movie.id}
         key={movie.id}
-        upvote={upvoteMovie}
-        downvote={downvoteMovie}
+        upVoteMovie={upVoteMovie}
+        downVoteMovie={downVoteMovie}
         onSelect={() => onSelectMovie(movie)}
       />
     )

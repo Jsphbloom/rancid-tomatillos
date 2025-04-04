@@ -11,7 +11,6 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 function App() {
   const [movies, setMovies] = useState(moviePosters)
-  const [voteCount, setVoteCount] = useState("")
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   const handleSelectMovie = (movie) => {
@@ -51,9 +50,8 @@ function App() {
       ) : (
         <MoviesContainer
         movies={movies} 
-        vote_count = {voteCount} 
-        upvoteMovie={upVoteMovie} 
-        downvoteMovie={downVoteMovie} 
+        upVoteMovie={upVoteMovie} 
+        downVoteMovie={downVoteMovie} 
         onSelectMovie={handleSelectMovie} 
         />
       )}
