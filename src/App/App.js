@@ -18,6 +18,9 @@ function App() {
     setSelectedMovie(movie)
   }
 
+  function goHome(){
+    setSelectedMovie(null)
+  }
 
   function upVoteMovie(id) {
     const updatedMovie = movies.map(movie => {
@@ -46,13 +49,13 @@ function App() {
       </header>
 
       {selectedMovie ? (
-        <MovieDetails movieDetails={movieDetails} />
+        <MovieDetails movieDetails={movieDetails} goHome={goHome}/>
       ) : (
         <MoviesContainer
         movies={movies} 
         upVoteMovie={upVoteMovie} 
         downVoteMovie={downVoteMovie} 
-        onSelectMovie={handleSelectMovie} 
+        onSelectMovie={handleSelectMovie}
         />
       )}
 
