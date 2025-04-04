@@ -2,16 +2,29 @@ import './App.css';
 import searchIcon from '../icons/search.png';
 import MovieDetails from '../MovieDetails/MovieDetails'
 
-
-
 import { useState, useEffect } from 'react';
-import moviePosters from '../data/movie_posters';
-import movieDetails from '../data/movie_details';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 function App() {
-  const [movies, setMovies] = useState(moviePosters)
+  const [movies, setMovies] = useState([])
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [error, setError] = useState('')
+
+function getMovies() {
+  fetch('https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies')
+  .then(response => response.json())
+  .then(data => setMovies([...movies, ...data]))
+  .catch(error => setError(error.message))
+}
+
+
+useEffect(() => {
+  getMovies();
+}, [])
+
+
+
+
 
   const handleSelectMovie = (movie) => {
     console.log("Movie selected:", movie);
@@ -49,7 +62,7 @@ function App() {
       </header>
 
       {selectedMovie ? (
-        <MovieDetails movieDetails={movieDetails} goHome={goHome}/>
+        <MovieDetails goHome={goHome}/>
       ) : (
         <MoviesContainer
         movies={movies} 
