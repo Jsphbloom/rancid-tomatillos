@@ -13,9 +13,6 @@ function Movies({ movies, upvoteMovie, downvoteMovie, vote_count, onSelectMovie 
         key={movie.id}
         upvote={upvoteMovie}
         downvote={downvoteMovie}
-        genres={movie.genre_ids}
-        backdrop_path={movie.backdrop_path}
-        overview={movie.overview}
         onSelect={() => onSelectMovie(movie)}
       />
     )

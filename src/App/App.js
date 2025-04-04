@@ -35,8 +35,6 @@ function App() {
     setVoteCount(filteredMovie)
   }
 
-
-
   return (
     <main className='App'>
       <header>
@@ -44,7 +42,7 @@ function App() {
       </header>
 
       {selectedMovie ? (
-        <MovieDetails movieDetails={selectedMovie} />
+        <MovieDetails movieDetails={movieDetails} />
       ) : (
         <MoviesContainer
         movies={movies} 
