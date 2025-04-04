@@ -25,4 +25,4 @@ function Movies({ movies, upvoteMovie, downvoteMovie, vote_count, onSelectMovie 
   );
 }
   
-export default Movies;
+export default MoviesContainer;

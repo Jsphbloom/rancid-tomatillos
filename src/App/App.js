@@ -19,20 +19,25 @@ function App() {
     setSelectedMovie(movie)
   }
 
-  function upvoteMovie(id){
-    const filteredMovie= movies.filter(movie => {
-      return movie.id === id
+
+  function upVoteMovie(id) {
+    const updatedMovie = movies.map(movie => {
+      if (movie.id === id) {
+        return { ...movie, vote_count: movie.vote_count + 1 };
+      }
+      return movie
     })
-    filteredMovie.vote_count += 1
-    setVoteCount(filteredMovie)
+    setMovies(updatedMovie)
   }
 
-  function downvoteMovie(id){
-    const filteredMovie= movies.filter(movie => {
-      return movie.id === id
+  function downVoteMovie(id) {
+    const updatedMovie = movies.map(movie => {
+      if (movie.id === id) {
+        return { ...movie, vote_count: movie.vote_count - 1 };
+      }
+      return movie
     })
-    filteredMovie.vote_count -=1
-    setVoteCount(filteredMovie)
+    setMovies(updatedMovie)
   }
 
   return (
@@ -47,11 +52,12 @@ function App() {
         <MoviesContainer
         movies={movies} 
         vote_count = {voteCount} 
-        upvoteMovie={upvoteMovie} 
-        downvoteMovie={downvoteMovie} 
+        upvoteMovie={upVoteMovie} 
+        downvoteMovie={downVoteMovie} 
         onSelectMovie={handleSelectMovie} 
         />
       )}
+
     </main>
   );
 }
