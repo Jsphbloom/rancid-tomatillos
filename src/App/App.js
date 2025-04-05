@@ -13,7 +13,7 @@ function App() {
 function getMovies() {
   fetch('https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies')
   .then(response => response.json())
-  .then(data => setMovies([...movies, ...data]))
+  .then(data => setMovies(data))
   .catch(error => setError(error.message))
 }
 
@@ -61,11 +61,11 @@ useEffect(() => {
 
 
 
-
-
   const handleSelectMovie = (movie) => {
-    console.log("Movie selected:", movie);
-    setSelectedMovie(movie)
+    fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${movie.id}`)
+    .then(response => response.json())
+    .then(data => setSelectedMovie(data))
+      .catch(error => setError(error.message))
   }
 
   function goHome(){
@@ -79,7 +79,7 @@ useEffect(() => {
       </header>
 
       {selectedMovie ? (
-        <MovieDetails goHome={goHome}/>
+        <MovieDetails movieDetails={selectedMovie} goHome={goHome}/>
       ) : (
         <MoviesContainer
         movies={movies} 
