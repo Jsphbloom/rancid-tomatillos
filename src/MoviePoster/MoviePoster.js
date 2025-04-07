@@ -9,7 +9,7 @@ function MoviePoster({poster_path, title, vote_count, id, upVoteMovie, downVoteM
       <section className='VoteCount'>
 
         <button onClick={() => upVoteMovie(id)}>
-          <img src={upVoteArrow} alt="downVote"/>
+          <img src={upVoteArrow} alt="upVote"/>
         </button>
 
           <p>{vote_count}</p>
