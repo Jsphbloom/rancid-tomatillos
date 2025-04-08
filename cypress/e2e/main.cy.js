@@ -36,8 +36,6 @@ describe('Main Page', () => {
     .get('.MoviePoster').first().get(':nth-child(1) > .VoteCount > p').should('have.text', '32545')
   })
 
-///////////////
-
   it('individual posters can be downvoted', () => {
     cy.intercept("PATCH", 'https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/155', {
       statusCode: 201,
@@ -57,12 +55,5 @@ describe('Main Page', () => {
 })
 
 
-
-// it("should have a form to enter a city and display that city's breweries", () => {
-//   cy.get("input[name='city']").type("savannah")
-//   .get(".search-button").click()
-//   .get(".breweries-container").find(".brewery-card-wrapper").should("have.length", 2)
-//   .get(".brewery-name").first().contains("h2", "Moon River Brewing Co")
-//   .get(".brewery-name").last().contains("h2", "Two Tides Brewing Company")
-//   .get(".brewery-location").first().contains("p", "Savannah, Georgia")
-// });
+  
+  
