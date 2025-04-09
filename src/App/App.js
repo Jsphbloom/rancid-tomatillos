@@ -1,19 +1,22 @@
 import './App.css';
-import searchIcon from '../icons/search.png';
 import MovieDetails from '../MovieDetails/MovieDetails'
-
-import { useState, useEffect } from 'react';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import { Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
 
 function App() {
   const [movies, setMovies] = useState([])
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [error, setError] = useState('')
+
+  useEffect(() => {
+  getMovies();
+    }, [])
 
 function getMovies() {
   fetch('https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies')
   .then(response => response.json())
-  .then(data => setMovies(data))
+  .then(data => setMovies(data.movies))
   .catch(error => setError(error.message))
 }
 
@@ -55,39 +58,18 @@ function downVoteMovie(id){
     .catch(error => setError(error.message))
   };
 
-useEffect(() => {
-  getMovies();
-}, [])
-
-
-
-  const handleSelectMovie = (movie) => {
-    fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${movie.id}`)
-    .then(response => response.json())
-    .then(data => setSelectedMovie(data))
-      .catch(error => setError(error.message))
-  }
-
-  function goHome(){
-    setSelectedMovie(null)
-  }
+  if (error) return <p>{error}</p>;
 
   return (
     <main className='App'>
       <header>
         <h1>rancid tomatillos</h1>
       </header>
-
-      {selectedMovie ? (
-        <MovieDetails movieDetails={selectedMovie} goHome={goHome}/>
-      ) : (
-        <MoviesContainer
-        movies={movies} 
-        upVoteMovie={upVoteMovie} 
-        downVoteMovie={downVoteMovie} 
-        onSelectMovie={handleSelectMovie}
-        />
-      )}
+      
+      <Routes>
+        <Route path="/" element={<MoviesContainer movies={movies} upVoteMovie={upVoteMovie} downVoteMovie={downVoteMovie}/>}/>
+        <Route path="/movies/:id" element={<MovieDetails />} />
+      </Routes>
 
     </main>
   );
