@@ -12,8 +12,6 @@ function MovieDetails() {
   
 
   const handleSelectMovie = (id) => {
-    
-
     fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${id}`)
     .then(response => response.json())
     .then(data => setMovie(data))
@@ -30,7 +28,7 @@ function MovieDetails() {
     <section className='MovieDetails'>
       <img src={movie.backdrop_path} alt={movie.title}/>
         <p>{movie.title}</p>
-        <p>{movie.genre_ids}</p>
+        <p>{movie.genre_ids?.join(', ')}</p>
         <p>{movie.overview}</p>
         <Link to="/">
           <button>
