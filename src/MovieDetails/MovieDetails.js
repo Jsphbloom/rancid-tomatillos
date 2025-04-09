@@ -3,13 +3,18 @@ import home from '../icons/home.png'
 import { useParams, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
-function MovieDetails() {
-  const { id } = useParams()
-  const [movie, setMovie] = useState(null)
-  const [error, setError] = useState('')
 
-  const handleSelectMovie = (movie) => {
-    fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${movie.id}`)
+function MovieDetails() {
+  const [movie, setMovie] = useState([])
+  const [error, setError] = useState('')
+  const { id } = useParams()
+
+  
+
+  const handleSelectMovie = (id) => {
+    
+
+    fetch(`https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/${id}`)
     .then(response => response.json())
     .then(data => setMovie(data))
       .catch(error => setError(error.message))
@@ -23,9 +28,9 @@ function MovieDetails() {
 
   return (
     <section className='MovieDetails'>
-      <img src={movie.backdrop_path} alt=''/>
+      <img src={movie.backdrop_path} alt={movie.title}/>
         <p>{movie.title}</p>
-        <p>{movie.genre_ids.join(', ')}</p>
+        <p>{movie.genre_ids}</p>
         <p>{movie.overview}</p>
         <Link to="/">
           <button>
