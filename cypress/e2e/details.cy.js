@@ -3,8 +3,8 @@ beforeEach(() => {
         statusCode: 200,
         fixture: "movie_posters"
     })
-    .visit("http://localhost:3000/")
-    
+    .visit("https://rancid-tomatillos-5sma.onrender.com")
+
     cy.intercept("GET", 'https://rancid-tomatillos-api-ce4a3879078e.herokuapp.com/api/v1/movies/155', {
         statusCode: 201,
         fixture: "movie_details"

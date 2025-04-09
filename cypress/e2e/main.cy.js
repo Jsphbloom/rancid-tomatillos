@@ -3,7 +3,7 @@ beforeEach(() => {
     statusCode: 200,
     fixture: "movie_posters"
   })
-  .visit("http://localhost:3000/")
+  .visit("https://rancid-tomatillos-5sma.onrender.com")
 });
 
 describe('Main Page', () => {
