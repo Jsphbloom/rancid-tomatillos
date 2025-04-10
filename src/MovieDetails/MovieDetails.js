@@ -25,6 +25,7 @@ function MovieDetails() {
   if (error) return <p>{error}</p>;
 
   return (
+  
     <section className='MovieDetails'>
         <Link to="/">
           <button>
