@@ -1,6 +1,7 @@
 import './App.css';
 import MovieDetails from '../MovieDetails/MovieDetails'
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import NotFound from '../NotFound/NotFound'
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MoviesContainer />}/>
         <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
     </main>

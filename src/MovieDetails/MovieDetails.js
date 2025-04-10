@@ -25,16 +25,17 @@ function MovieDetails() {
   if (error) return <p>{error}</p>;
 
   return (
+  
     <section className='MovieDetails'>
-      <img src={movie.backdrop_path} alt={movie.title}/>
-        <p>{movie.title}</p>
-        <p>{movie.genre_ids?.join(', ')}</p>
-        <p>{movie.overview}</p>
         <Link to="/">
           <button>
             <img src={home} alt="home" />
           </button>
         </Link>
+      <img src={movie.backdrop_path} alt={movie.title}/>
+        <p>{movie.title}</p>
+        <p>{movie.genre_ids?.join(', ')}</p>
+        <p>{movie.overview}</p>
     </section>
   );
 }
