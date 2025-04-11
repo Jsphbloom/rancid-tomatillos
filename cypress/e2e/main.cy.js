@@ -10,7 +10,7 @@ describe('Main Page', () => {
   it('displays title on page load', () => {
 
     cy.get('h1')
-    .contains('rancid tomatillos')
+    .contains('Rancid Tomatillos')
 
     cy.get('.MoviesContainer')
       .find('.MoviePoster').should("have.length", 4)
