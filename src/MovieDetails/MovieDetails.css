@@ -1,0 +1,35 @@
+.MovieDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0 0 0;
+}
+
+.title {
+  color: rgb(255, 255, 255);
+  font-family: impact;
+  font-size: 4rem;
+  padding: 1.75rem;
+}
+
+.detailsSection {
+    background: linear-gradient(to bottom, #3e49b1, rgb(88, 103, 221));
+
+}
+
+.genres {
+  font-family: Georgia;
+  font-size: 1.75rem;
+}
+
+.overview {
+  font-family: Georgia;
+  padding: 2rem;
+}
+
+.home {
+  margin-left: auto;
+  background-color: rgb(22, 16, 136);
+  border-radius: 50%;
+  
+}
