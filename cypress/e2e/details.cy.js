@@ -17,7 +17,7 @@ describe('Movie Details page', () => {
     it('displays movie details when a poster is clicked', () => {
   
       cy.get('h1')
-      .contains('rancid tomatillos')
+      .contains('Rancid Tomatillos')
   
       cy.get('p').eq(0).should('contain', 'The Dark Knight');
       cy.get('p').eq(1).should('contain', 'Drama, Action, Crime, Thriller')

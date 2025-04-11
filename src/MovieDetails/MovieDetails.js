@@ -27,12 +27,12 @@ function MovieDetails() {
   return (
   
     <section className='MovieDetails'>
+      <button className='home'>
         <Link to="/">
-          <button className='home'>
-            <img src={home} alt="home" />
-          </button>
+          <img src={home} alt="home" />
         </Link>
-        <p className='title'>{movie.title}</p>
+      </button>
+      <p className='title'>{movie.title}</p>
       <section className='detailsSection'>
         <img src={movie.backdrop_path} alt={movie.title}/>
         <p className='genres'>{movie.genre_ids?.join(', ')}</p>
