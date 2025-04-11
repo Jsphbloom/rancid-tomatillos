@@ -1,6 +1,15 @@
 .MoviesContainer {
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
+}
+
+h1 {
+    font-family: impact;
+    color: rgb(111, 3, 3)
+}
+
+header {
+    background-color: rgb(88, 103, 221);
 }

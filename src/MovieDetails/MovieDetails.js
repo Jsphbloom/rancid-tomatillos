@@ -28,14 +28,16 @@ function MovieDetails() {
   
     <section className='MovieDetails'>
         <Link to="/">
-          <button>
+          <button className='home'>
             <img src={home} alt="home" />
           </button>
         </Link>
-      <img src={movie.backdrop_path} alt={movie.title}/>
-        <p>{movie.title}</p>
-        <p>{movie.genre_ids?.join(', ')}</p>
-        <p>{movie.overview}</p>
+        <p className='title'>{movie.title}</p>
+      <section className='detailsSection'>
+        <img src={movie.backdrop_path} alt={movie.title}/>
+        <p className='genres'>{movie.genre_ids?.join(', ')}</p>
+        <p className='overview'>{movie.overview}</p>
+      </section>
     </section>
   );
 }
