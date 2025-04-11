@@ -1,14 +1,24 @@
-# Rancid Tomatillos - Starter Repo
+# Rancid Tomatillos
 
-## [The project spec for Rancid Tomatillos can be found here.](https://curriculum.turing.edu/module3/projects/rancid-tomatillos)
+Rancid Tomatillos is a React-based web application that allows users to explore and interact with a collection of movies. Users can browse movies, view detailed information, and upvote/downvote their favorites — all within a sleek and responsive UI. This project demonstrates component-based architecture, asynchronous data handling, and React Router.
 
-## Set Up
-1.  Fork this repo
-2.  Clone **and rename** this repo: `git clone [remote-address] [new-name]`  
-   For example: `git clone git@github.com:turingschool-examples/rancid-tomatillos-starter.git rancid-tomatillos`
-4.  `cd` into the directory
-5.  Install necessary dependencies with `npm install`
-6.  Run your React app with `npm start`
-7.  Go to `http://localhost:3000/` and you should see a page with some starter elements
-8.  Enter `control + c` in your terminal to stop running the React app at any time
-9. To run Cypress tests, use `npx cypress open`
+## 🛠️ Built With
+
+- **React** – Frontend library for building UI
+- **React Router** – Handles client-side routing
+- **JavaScript (ES6+)** – App logic and interactivity
+- **CSS3** – Styling and layout
+- **HTML5** – Semantic structure
+- **Cypress** – End-to-end testing
+- **ARIA & Semantic HTML** – Accessibility best practices
+
+---
+
+## 📦 Features
+
+- 🎞️ View a grid of current movies fetched from an external API
+- 🧾 Click on a movie to view detailed information
+- ⬆️⬇️ Upvote or downvote a movie’s popularity
+- 🏠 Return to the home page from any detail view
+- 🚫 Graceful error handling for bad network requests and invalid routes
+- 📱 Responsive design for mobile and desktop views
